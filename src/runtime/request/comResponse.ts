@@ -5,7 +5,7 @@
 
 import type { FetchContext } from 'ofetch'
 
-export function comResponse({ request, response, options }: FetchContext) {
+export function comResponse({ response }: FetchContext) {
   // 是否需要成功响应拦截器
   const data = response?._data
 

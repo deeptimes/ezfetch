@@ -1,6 +1,6 @@
 import type { FetchContext } from 'ofetch'
 
-export function comResponseError({ response, options, error }: FetchContext) {
+export function comResponseError({ response }: FetchContext) {
   // 获取HTTP状态码
   const status = response?.status
   // console.log(status)
@@ -10,7 +10,6 @@ export function comResponseError({ response, options, error }: FetchContext) {
       break
     case 401:
       console.error('Unauthorized: 没有权限访问')
-
       break
     case 403:
       console.error('Forbidden: 没有权限访问')
