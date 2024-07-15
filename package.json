@@ -5,6 +5,10 @@
   "repository": "@deeptimes/ezfetch",
   "license": "MIT",
   "type": "module",
+  "capabilities": {
+    "nuxt": "^3.10.0",
+    "node": ">18"
+  },
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
@@ -29,7 +33,8 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.12.3"
+    "@nuxt/kit": "^3.12.3",
+    "defu": "^6.1.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.3.9",

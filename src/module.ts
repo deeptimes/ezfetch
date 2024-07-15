@@ -1,19 +1,55 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { addImports, addPlugin, createResolver, defineNuxtModule, logger } from '@nuxt/kit'
+import { defu } from 'defu'
+import pkg from '../package.json'
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+export interface ModuleOptions {
+  baseUrl: string
+  // comRequest: string 暂时没想好
+  cookie: {
+    access: string
+  }
+}
+
+const meta = {
+  name: pkg.name,
+  version: pkg.version,
+  compatibility: pkg.capabilities,
+  configKey: 'ezFetch',
+}
 
 export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: '@deeptimes/ezfetch',
-    configKey: 'ezFetch',
-  },
+  meta: meta,
   // Default configuration options of the Nuxt module
-  defaults: {},
-  setup(_options, _nuxt) {
-    const resolver = createResolver(import.meta.url)
+  defaults: _nuxt => ({
+    baseUrl: _nuxt.options.runtimeConfig.public.apiBase as string,
+    // comRequest: '',暂时没想好
+    cookie: {
+      access: 'token_access',
+    },
+  }),
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve('./runtime/plugin'))
+  setup(_options, _nuxt) {
+    logger.info(`🧩 Load module: ${meta.name} v${meta.version}`)
+
+    const resolver = createResolver(import.meta.url)
+    const runtimeDir = resolver.resolve('./runtime')
+
+    // _nuxt.options.runtimeConfig.public.ezFetch = _options
+
+    /* Composables */
+    addImports({
+      name: 'ezFetch',
+      as: 'ezFetch',
+      from: resolver.resolve(runtimeDir, 'composables', 'ezFetch'),
+    })
+
+    /* Plugins */
+    addPlugin(resolver.resolve(runtimeDir, 'plugin'))
+
+    /*  */
+    // provides module options to runtime
+    const nuxtPublic = _nuxt.options.runtimeConfig.public
+    nuxtPublic.ezFetch = defu(nuxtPublic.ezFetch as ModuleOptions, _options)
   },
 })
