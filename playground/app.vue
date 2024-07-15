@@ -7,7 +7,7 @@ const { data, pending } = await ezFetch('/items/blogs', {
 })
 
 result.value = data.value?.data
-console.log(result.value)
+// console.log(result.value)
 </script>
 
 <template>

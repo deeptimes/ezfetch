@@ -1,7 +1,7 @@
 import type { FetchContext } from 'ofetch'
 import { defineNuxtPlugin, useCookie, useRuntimeConfig } from 'nuxt/app'
 import type { ModuleOptions } from '../module'
-import { comRequest, comResponse, comResponseError } from './request'
+import { comRequest, comResponse, comResponseError } from './interceptor'
 
 declare module 'nuxt/app' {
   interface NuxtApp {
@@ -39,7 +39,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
     },
 
     // 错误拦截
-    onResponseError(ctx: FetchContext) {
+    async onResponseError(ctx: FetchContext) {
       comResponseError(ctx) // 通用错误逻辑
     },
   })
