@@ -2,7 +2,7 @@
   "name": "@deeptimes/ezfetch",
   "version": "0.1.0",
   "description": "Easy to use fetch through simple wrapping ofetch",
-  "repository": "deeptimes/ezfetch",
+  "repository": "@deeptimes/ezfetch",
   "license": "MIT",
   "type": "module",
   "exports": {
