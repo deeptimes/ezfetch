@@ -5,34 +5,34 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-本模块为个人学习交流，其中在类型方面还有些不足，希望有大神来指点。
+This module is for personal learning and communication. There are still some deficiencies in the types. I hope some experts can give me some advice.
 
-- [🌍 English-Readme](https://github.com/deeptimes/ezfetch/blob/main/README-EN.md)
-- [🏀 在线试炼](https://stackblitz.com/edit/nuxt-starter-vpwwc4?file=README.md)
+- [🌍 中文说明](https://github.com/deeptimes/ezfetch/blob/main/README.md)
+- [🏀 Online playground](https://stackblitz.com/edit/nuxt-starter-vpwwc4?file=README.md)
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
-## 功能
-- 可自定义拦截器（请求拦截，响应拦截，错误拦截）
-- 封装了 `Authorization`，在请求时可携带`token`
-- 统一配置 `BaseUrl`
+## Features
+- ⛰ &nbsp;Foo
+- 🚠 &nbsp;Bar
+- 🌲 &nbsp;Baz
 
-## 快速安装
-使用一个命令将模块安装到你的 Nuxt 应用程序：
+## Quick Setup
+Install the module to your Nuxt application with one command:
 
 ```bash
 npx nuxi module add @deeptimes/ezfetch
 # for pnpm
 pnpx nuxi module add @deeptimes/ezfetch
 ```
-就这样！你现在可以在 Nuxt 应用中使用`EzFetch`模块了 ✨
 
-## 手动安装
+## Manual Installation
 ```bash
 npm i ezfetch
 # or
 pnpm add ezfetch
 ```
-修改`nuxt.config.ts`,并在`modules`数组中添加`@deeptimes/ezfetch`。
+
+Modify `nuxt.config.ts` and add `@deeptimes/ezfetch` to the `modules` array.
 
 ```js
 export default defineNuxtConfig({
@@ -40,32 +40,35 @@ export default defineNuxtConfig({
 })
 ```
 
-## 贡献
+That's it! You can now use My Module in your Nuxt app ✨
+
+
+## Contribution
 
 <details>
-  <summary>本地开发</summary>
-
+  <summary>Local development</summary>
+  
   ```bash
-  # 安装依赖项
+  # Install dependencies
   npm install
   
-  # 生成类型存根
+  # Generate type stubs
   npm run dev:prepare
   
-  # 使用 Playground 进行开发
+  # Develop with the playground
   npm run dev
   
-  # 构建 Playground
+  # Build the playground
   npm run dev:build
   
-  # 运行 ESLint
+  # Run ESLint
   npm run lint
   
-  # 运行 Vitest
+  # Run Vitest
   npm run test
   npm run test:watch
   
-  # 发布新版本
+  # Release new version
   npm run release
   ```
 
