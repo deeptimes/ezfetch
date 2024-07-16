@@ -2,6 +2,7 @@ import type { FetchContext } from 'ofetch'
 import { defineNuxtPlugin, useCookie, useRuntimeConfig } from 'nuxt/app'
 import type { ModuleOptions } from '../module'
 import { comRequest, comResponse, comResponseError } from './interceptor'
+import { computed } from '#imports'
 
 declare module 'nuxt/app' {
   interface NuxtApp {
@@ -15,12 +16,14 @@ export default defineNuxtPlugin((_nuxtApp) => {
   // 模块配置选项
   const opts = config.public.ezFetch as ModuleOptions
 
-  // 读取 Token，如果已存在的话。
-  // 其中access的token名称可在模块配置中定义，默认：token_access
-  const token = useCookie(opts.cookie.access)
+  // 从Cookie中读取`token`默认：token_access
+  const tokenFromCookie = useCookie(opts.cookie.access)
+
+  // 读取配置中的静态Token，(可来自配置或env)
+  const token = computed(() => tokenFromCookie.value || opts.apiSecret)
 
   const ezFetch = $fetch.create({
-    baseURL: opts.baseUrl,
+    baseURL: opts.apiBase,
     // 请求拦截器
     onRequest(ctx: FetchContext) {
       // 创建 `Headers` 对象，并尝试用现有的 `ctx.options.headers` 初始化

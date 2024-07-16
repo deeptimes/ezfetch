@@ -27,9 +27,9 @@ pnpx nuxi module add @deeptimes/ezfetch
 
 ## Manual Installation
 ```bash
-npm i ezfetch
+npm i @deeptimes/ezfetch
 # or
-pnpm add ezfetch
+pnpm add @deeptimes/ezfetch
 ```
 
 Modify `nuxt.config.ts` and add `@deeptimes/ezfetch` to the `modules` array.

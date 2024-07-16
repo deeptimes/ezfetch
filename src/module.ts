@@ -4,7 +4,8 @@ import pkg from '../package.json'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
-  baseUrl: string
+  apiBase: string
+  apiSecret?: string
   // comRequest: string 暂时没想好
   cookie: {
     access: string
@@ -22,7 +23,8 @@ export default defineNuxtModule<ModuleOptions>({
   meta: meta,
   // Default configuration options of the Nuxt module
   defaults: _nuxt => ({
-    baseUrl: _nuxt.options.runtimeConfig.public.apiBase as string,
+    apiBase: _nuxt.options.runtimeConfig.public.apiBase as string,
+    apiSecret: _nuxt.options.runtimeConfig.apiSecret as string,
     // comRequest: '',暂时没想好
     cookie: {
       access: 'token_access',

@@ -1,5 +1,5 @@
 {
-  "name": "ezfetch",
+  "name": "@deeptimes/ezfetch",
   "version": "0.1.6",
   "description": "Easy to use fetch through simple wrapping ofetch",
   "repository": "@deeptimes/ezfetch",

@@ -1,6 +1,9 @@
 export default defineNuxtConfig({
+  ssr: false,
   modules: ['../src/module'],
   ezFetch: {
+    apiBase: 'https://cms.ezdoc.cn',
+    // apiSecret: 'BQqecWB_0rl4Zu4dYJGnD0qGQ7gWJWYM',
     cookie: {
       access: 'tk_access',
     },

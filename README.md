@@ -28,9 +28,9 @@ pnpx nuxi module add @deeptimes/ezfetch
 
 ## 手动安装
 ```bash
-npm i ezfetch
+npm i @deeptimes/ezfetch
 # or
-pnpm add ezfetch
+pnpm add @deeptimes/ezfetch
 ```
 修改`nuxt.config.ts`,并在`modules`数组中添加`@deeptimes/ezfetch`。
 
@@ -39,6 +39,17 @@ export default defineNuxtConfig({
   modules: ["@deeptimes/ezfetch"]
 })
 ```
+## 配置
+```js
+ezFetch: {
+  apiBase: 'https://your.domain.com',
+  apiSecret: 'your_token',
+  cookie: {
+    access: 'token_access',
+  },
+},
+```
+
 
 ## 贡献
 
