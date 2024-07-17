@@ -21,7 +21,7 @@ import type { Ref } from '#imports'
 
 export function ezFetch<T>(
   url: string | (() => string),
-  options: Omit<UseFetchOptions<T>, 'default'> & { default: () => T | Ref<T> },
+  options?: Omit<UseFetchOptions<T>, 'default'> & { default: () => T | Ref<T> },
 ): AsyncData<T, FetchError> {
   return useFetch(url, {
     ...options,
