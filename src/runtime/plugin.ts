@@ -1,4 +1,4 @@
-import type { FetchContext } from 'ofetch'
+import type { FetchContext, $Fetch } from 'ofetch'
 import { defineNuxtPlugin, useCookie, useRuntimeConfig } from 'nuxt/app'
 import type { ModuleOptions } from '../module'
 import { comRequest, comResponse, comResponseError } from './interceptor'
@@ -6,7 +6,13 @@ import { computed } from '#imports'
 
 declare module 'nuxt/app' {
   interface NuxtApp {
-    $ezFetch: typeof $fetch
+    $ezFetch: $Fetch
+  }
+}
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $ezFetch: $Fetch
   }
 }
 
